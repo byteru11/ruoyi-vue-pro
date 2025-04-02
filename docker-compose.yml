@@ -1,5 +1,3 @@
-version: "3.4"
-
 name: yudao-system
 
 services:
@@ -15,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-123456}
     volumes:
       - mysql:/var/lib/mysql/
-      - ../../sql/mysql/ruoyi-vue-pro.sql:/docker-entrypoint-initdb.d/ruoyi-vue-pro.sql:ro
+      - ./sql/mysql/ruoyi-vue-pro.sql:/docker-entrypoint-initdb.d/ruoyi-vue-pro.sql:ro
 
   redis:
     container_name: yudao-redis
@@ -58,7 +56,7 @@ services:
   admin:
     container_name: yudao-admin
     build:
-      context: ../../../yudao-ui-admin-vue3
+      context: ../yudao-ui-admin-vue3
       args:
         NODE_ENV:
           ENV=${NODE_ENV:-production}
